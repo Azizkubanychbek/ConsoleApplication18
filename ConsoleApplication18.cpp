@@ -1,59 +1,28 @@
-﻿#include <iostream>
+#include <iostream>
 
-class Fraction
-{
-private:
-    int chisl_;
-    int znam_;
 
-public:
-    Fraction(int chisl, int znam)
-    {
-        chisl_ = chisl;
-        znam_ = znam;
-    }
-
-    bool operator==(const Fraction& other) const
-    {
-        return chisl_ * other.znam_ == znam_ * other.chisl_;
-    }
-
-    bool operator!=(const Fraction& other) const
-    {
-        return !(*this == other);
-    }
-
-    bool operator<(const Fraction& other) const
-    {
-        return chisl_ * other.znam_ < znam_* other.chisl_;
-    }
-
-    bool operator>(const Fraction& other) const
-    {
-        return other < *this;
-    }
-
-    bool operator<=(const Fraction& other) const
-    {
-        return !(other < *this);
-    }
-
-    bool operator>=(const Fraction& other) const
-    {
-        return !(*this < other);
-    }
+struct point {
+	double m_x;
+	double m_y;
+	point(double x, double y) {
+		m_x = x;
+		m_y = y;
+	}
 };
+
+void print_point(const point& point_object) {
+	std::cout << "x:" << point_object.m_x << ", y: "
+		<< point_object.m_y << std::endl;
+}
+
+
 
 int main()
 {
-    Fraction f1(4, 3);
-    Fraction f2(6, 11);
-
-    std::cout << "f1" << ((f1 == f2) ? " == " : " not == ") << "f2" << '\n';
-    std::cout << "f1" << ((f1 != f2) ? " != " : " not != ") << "f2" << '\n';
-    std::cout << "f1" << ((f1 < f2) ? " < " : " not < ") << "f2" << '\n';
-    std::cout << "f1" << ((f1 > f2) ? " > " : " not > ") << "f2" << '\n';
-    std::cout << "f1" << ((f1 <= f2) ? " <= " : " not <= ") << "f2" << '\n';
-    std::cout << "f1" << ((f1 >= f2) ? " >= " : " not >= ") << "f2" << '\n';
-    return 0;
+	int i;
+	for (i = 0; i < 5; i++) {
+		point my_point(i, 2 * i);
+		print_point(my_point);
+	}
+	return 0;
 }
