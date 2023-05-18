@@ -1,28 +1,20 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
+int main() {
+    std::vector<int> numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-struct point {
-	double m_x;
-	double m_y;
-	point(double x, double y) {
-		m_x = x;
-		m_y = y;
-	}
-};
+    std::for_each(numbers.begin(), numbers.end(), [](int& num) {
+        if (num % 2 != 0) {
+            num *= 3;
+        }
+        });
 
-void print_point(const point& point_object) {
-	std::cout << "x:" << point_object.m_x << ", y: "
-		<< point_object.m_y << std::endl;
-}
+    for (const auto& num : numbers) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
 
-
-
-int main()
-{
-	int i;
-	for (i = 0; i < 5; i++) {
-		point my_point(i, 2 * i);
-		print_point(my_point);
-	}
-	return 0;
+    return 0;
 }
